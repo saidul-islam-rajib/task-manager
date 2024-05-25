@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskService } from '../../task.service';
 import {
   trigger,
@@ -26,16 +26,17 @@ import { CommonModule } from '@angular/common';
 })
 
 export class TaskItemComponent {
-  @Input() task: any;
+  @Input() task: { title: string; completed: boolean } = { title: '', completed: false };
+  @Output() taskDeleted = new EventEmitter<void>();
 
   constructor(private taskService: TaskService) {}
 
   toggleCompletion() {
-    this.taskService.toggleTaskCompletion(this.task.id);
+    this.task.completed = !this.task.completed;
   }
 
   deleteTask() {
-    this.taskService.deleteTask(this.task.id);
+    this.taskDeleted.emit();
   }
 }
 
