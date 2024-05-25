@@ -1,9 +1,37 @@
-<div>
-    <button (click)="filter = 'all'">All</button>
-    <button (click)="filter = 'completed'">Completed</button>
-    <button (click)="filter = 'incomplete'">Incomplete</button>
+<div class="container my-5">
+  <h1 class="mb-3">Task List</h1>
+  <div>
+    <button (click)="changeFilter('all')" class="btn btn-primary">All</button>
+    <button (click)="changeFilter('completed')" class="btn btn-success">Completed</button>
+    <button (click)="changeFilter('incomplete')" class="btn btn-warning">Incomplete</button>
+  </div>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Created Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of filteredTasks$ | async">
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.createdDate | date: 'short' }}</td>
+        <td>
+          <span [ngClass]="{'text-success': task.completed, 'text-danger': !task.completed}">
+            {{ task.completed ? 'Completed' : 'Incomplete' }}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-info" (click)="toggleTaskCompletion(task.id)">
+            {{ task.completed ? 'Mark as Incomplete' : 'Mark as Completed' }}
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteTask(task.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-<div *ngFor="let task of filteredTasks$ | async">
-  <app-task-item [task]="task"></app-task-item>
-</div>
-  
