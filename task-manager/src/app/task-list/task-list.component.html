@@ -1,1 +1,10 @@
 <p>task-list works!</p>
+<div>
+    <button (click)="filter = 'all'">All</button>
+    <button (click)="filter = 'completed'">Completed</button>
+    <button (click)="filter = 'incomplete'">Incomplete</button>
+  </div>
+  <div *ngFor="let task of filteredTasks$ | async">
+    <app-task-item [task]="task"></app-task-item>
+  </div>
+  

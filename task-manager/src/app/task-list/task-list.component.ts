@@ -1,24 +1,15 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-task-list',
-//   standalone: true,
-//   imports: [],
-//   templateUrl: './task-list.component.html',
-//   styleUrl: './task-list.component.css'
-// })
-// export class TaskListComponent {
-// }
-
-
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { map } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { TaskItemComponent } from '../task-item/task-item.component';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css']
+  styleUrls: ['./task-list.component.css'],
+  standalone: true,
+  imports: [CommonModule, TaskItemComponent]
 })
 
 export class TaskListComponent implements OnInit {
