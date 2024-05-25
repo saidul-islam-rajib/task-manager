@@ -6,14 +6,12 @@
       <form (ngSubmit)="addTask()" >
         <div class="mb-3">
           <label for="title" class="form-label">Name</label>
-          <input type="text" class="form-control" id="title" name="title" [(ngModel)]="newTaskTitle" required>
+          <input type="text" class="form-control" id="title" name="title" [(ngModel)]="newTaskTitle" (ngModelChange)="onTitleChange($event)" required>
         </div>                
 
         <div class="mb-3">
           <label for="description">Description</label>
-          <textarea type="text" class="form-control" id="description"
-            name="description" [(ngModel)]="newTaskDescription" required>
-          </textarea>
+          <textarea type="text" class="form-control" id="description" name="description" [(ngModel)]="newTaskDescription" (ngModelChange)="onDescriptionChange($event)" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

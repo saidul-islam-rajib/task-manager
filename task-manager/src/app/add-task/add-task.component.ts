@@ -26,4 +26,15 @@ export class AddTaskComponent {
       this.router.navigate(['tasks']);
     }
   }
+
+  onTitleChange(title: string) {
+    this.newTaskTitle = title;
+  }
+  
+  onDescriptionChange(description: string) {
+    this.newTaskDescription = description;
+  }
+  
 }
+
+
