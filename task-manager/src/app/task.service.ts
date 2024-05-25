@@ -12,17 +12,40 @@ interface Task {
 @Injectable({
   providedIn: 'root',
 })
-
-
 export class TaskService {
-  private tasks: Task[] = JSON.parse(localStorage.getItem('tasks') || '[]');
+  private tasks: Task[] = [];
   private tasksSubject = new BehaviorSubject<Task[]>(this.tasks);
   tasks$ = this.tasksSubject.asObservable();
 
-  constructor() { }
+  constructor() {
+    this.loadTasksFromLocalStorage();
+  }
+
+  private isLocalStorageAvailable(): boolean {
+    try {
+      const test = '__localStorageTest__';
+      localStorage.setItem(test, test);
+      localStorage.removeItem(test);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  private loadTasksFromLocalStorage() {
+    if (this.isLocalStorageAvailable()) {
+      const storedTasks = localStorage.getItem('tasks');
+      if (storedTasks) {
+        this.tasks = JSON.parse(storedTasks);
+        this.tasksSubject.next(this.tasks);
+      }
+    }
+  }
 
   private updateLocalStorage(tasks: Task[]) {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    if (this.isLocalStorageAvailable()) {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
   }
 
   addTask(title: string, description: string) {
