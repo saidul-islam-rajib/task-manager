@@ -1,1 +1,6 @@
-<p>task-item works!</p>
+<div [@taskAnimation]>
+    <span [class.completed]="task.completed">{{ task.title }}</span>
+    <button (click)="toggleCompletion()">Toggle</button>
+    <button (click)="deleteTask()">Delete</button>
+</div>
+  

@@ -5,18 +5,21 @@ import { AddTaskComponent } from './add-task/add-task.component';
 
 export const routes: Routes = [    
     {
+      path: '',
+      component: AddTaskComponent
+    },
+    {
       path: 'tasks',
       component: TaskListComponent
     },
     {
-        path: 'add',
-        component: AddTaskComponent
-    },
+      path: 'tasks/add',
+      component: AddTaskComponent
+    }, 
     {
-        path: '**',
-        component: TaskListComponent
-    }
-  
+      path: '**',
+      component: TaskListComponent
+    }, 
   ];
   
   @NgModule({
