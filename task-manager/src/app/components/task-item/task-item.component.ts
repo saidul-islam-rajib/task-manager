@@ -15,14 +15,6 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./task-item.component.css'],
   standalone: true,
   imports: [CommonModule],
-  animations: [
-    trigger('taskAnimation', [
-      state('void', style({ opacity: 0 })),
-      state('*', style({ opacity: 1 })),
-      transition('void => *', animate('300ms ease-in')),
-      transition('* => void', animate('300ms ease-out'))
-    ])
-  ]
 })
 
 export class TaskItemComponent {
