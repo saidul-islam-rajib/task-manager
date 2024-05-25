@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TaskListComponent } from './task-list/task-list.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 
-export const routes: Routes = [
-    {
-        path: '**',
-        component: TaskListComponent
-    },
+export const routes: Routes = [    
     {
       path: 'tasks',
       component: TaskListComponent
+    },
+    {
+        path: 'add',
+        component: AddTaskComponent
+    },
+    {
+        path: '**',
+        component: TaskListComponent
     }
   
   ];
