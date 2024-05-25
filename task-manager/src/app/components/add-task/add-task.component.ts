@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../task.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

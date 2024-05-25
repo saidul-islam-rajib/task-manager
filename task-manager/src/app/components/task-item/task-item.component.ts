@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../task.service';
 import {
   trigger,
   state,

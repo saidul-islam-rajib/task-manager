@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TaskService } from '../task.service';
+import { TaskService } from '../../task.service';
 import { CommonModule } from '@angular/common';
-import { Task } from '../Interfaces/task.model';
+import { Task } from '../../Interfaces/task.model';
 
 @Component({
   selector: 'app-task-list',
